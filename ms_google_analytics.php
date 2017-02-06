@@ -8,6 +8,15 @@ Version: 1.0
 Original: Rachel McCollin, http://rachelmccollin.com, via https://premium.wpmudev.org/blog/create-google-analytics-plugin
  */
 
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'add_action_links' );
+
+function add_action_links ( $links ) {
+ $mylinks = array(
+ '<a href="' . admin_url( 'options-general.php?page=ms_google_analytics/ms_google_analytics.php' ) . '">Settings</a>',
+ );
+return array_merge( $links, $mylinks );
+}
+
 function ms_google_analytics() { 
 $msga_account = get_option('MSGA_ACCOUNT');
 ?>
